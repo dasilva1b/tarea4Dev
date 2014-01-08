@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <link rel='stylesheet' href='{{STATIC_URL}}css/base.css'>
+        {% block style_css %}{% endblock %}
+</head>
+<body>
+ 
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
+
+<!--Ajax para modificar el url del iframe, es decir descubrir nuevas paginas-->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#button").click(function() {
+    var input_string = "null";
+    $.ajax({
+      url : "hey/",
+      type : "POST",
+      dataType: "json",
+      data : {
+      client_response : input_string,
+      csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+      success : function(json) {
+      $( "#pepe" ).attr('src', json.url);
+      $( "#like-dislike").attr('value',json.url);
+      $( "#like-dislike2").attr('value',json.url);
+      },
+      error : function(xhr,errmsg,err) {
+      alert(xhr.status + ": " + xhr.responseText);
+      }
+    });
+    return false;
+    });
+  });
+</script>
+
+<div class="titulo" id="titulo" style="text-align:center">
+<img src="../../static/image.png"></img>
+</div>
+ 
+<!--Botones-->
+<div class="main" id="botones" style="text-align:center">
+  <form method="post" name="example form" >
+  {% csrf_token %}
+  <input class="botones" id="button" type="button" value="Discover"></input>
+  </form>
+
+
+  <form method="post" action="/like/">
+  {% csrf_token %}
+      <input id="like-dislike" type="hidden" value="http://www.w3schools.com" name="iframeurl">
+      <input class="botones" type="submit" value="Like">
+  </form>
+
+  <form method="post" action="/dislike/">
+  {% csrf_token %}
+      <input id="like-dislike2" type="hidden" value="http://www.w3schools.com" name="iframeurl">
+      <input class="botones" type="submit" value="Dislike">
+  </form>
+</div>
+<hr></hr>
+
+<div id="iframe" style="text-align:center">
+<iframe id="pepe" width="95%" height="600" src="http://www.w3schools.com"></iframe>
+</div>
+ 
+</body>
+</html>
+

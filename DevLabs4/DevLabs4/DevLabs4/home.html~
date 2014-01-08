@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <link rel='stylesheet' href='{{STATIC_URL}}css/base.css'>
+        <!--link rel='stylesheet' href='{{STATIC_URL}}css/fonts.css'-->
+        {% block style_css %}{% endblock %}
+    </head>
+    <title> Home Page </title>
+    <body>
+        <div id="banner-wrapper">
+            <div id="banner" class="container"></div>
+        </div>
+
+        <hr> </hr>
+        <h2> <li>Inicio de Sesion </li> </h2>
+        <form action="/iniciosesion/" method="post">
+            {% csrf_token %}
+            <div>
+            <label for="nombre">Usuario</label>  
+			<input type="text" name="nombre">
+			</div>
+			<div>
+            <label for="nombre">Clave</label>  
+			<input type="password" name="clave">
+            <p> <input type="submit" value="Iniciar" class="button"></p>
+        </form>
+        </br>
+        <h3> <li>Creacion de cuenta</li> </h3>
+        <form action="/creacioncuenta/" method="post">
+            {% csrf_token %}
+			<div>
+            <label for="nombre">Usuario</label>  
+			<input type="text" name="nombre">
+			</div>
+			<div>
+            <label for="nombre">Clave</label>  
+			<input type="password" name="clave">
+			</div>
+            <p> <select id="tipo" name="tipo_usuario" class="combo">
+                <option> Seleccione -- </option>
+                <option value="admin"> Administrador </option>
+                <option value="cliente"> Cliente regular </option>
+                </select>
+            <p> <input type="submit" value="Iniciar" class="button"></p>
+        </form>
+    </body>
+    <hr></hr>
+    <footer>
+        <p> Accesando el: {{ now }} </p>
+    </footer>
+</html>

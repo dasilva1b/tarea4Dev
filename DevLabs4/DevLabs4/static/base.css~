@@ -1,0 +1,115 @@
+	html, body
+	{
+		height: 100%;
+	}
+	
+	body
+	{
+		margin: 5px;
+		padding: 0px;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 12pt;
+		font-weight: 300;
+		color: #000000;
+		background: url(../img/bg2.jpg) repeat center top;
+	
+
+	}
+	
+	
+	h1, h2, h3, h4
+	{
+		
+		margin: 5px;
+        color: #728C00;
+        text-shadow: #0173B2 0px 0px 20px; 
+        text-shadow: #0173B2 0px 0px 10px 10px; 
+
+		font-size: 23px;
+	}
+	
+	div 
+	{
+		margin: .3em 0;
+	}
+	
+	div label 
+	{
+		width: 15%;
+		float: left;
+	}
+	
+	p, ol, ul
+	{
+		margin-top: 0;
+		color: white;
+	}
+	
+	ol, ul
+	{
+		padding: 0;
+		list-style: none;
+	}
+	
+	p
+	{
+		line-height: 180%;
+	}
+	
+	strong
+	{
+	}
+	
+	a
+	{
+	
+		margin: 40px;
+		font-size: 20px;
+		font-weight: 600;
+		color: white;
+	}
+	
+	a:hover
+	{
+		text-decoration: none;
+		color: white;
+	}
+	
+	input {
+	padding: .2em;
+
+
+	
+	}
+	.container
+	{
+		overflow: hidden;
+		margin: 0em auto;
+		width: 1200px;
+	}
+	
+
+
+
+
+/*********************************************************************************/
+/* Button Style                                                                  */
+/*********************************************************************************/
+
+	.button
+	{
+		display: inline-block;
+		padding: .5em 1em .5em 1em;
+		background: #728C00;
+		letter-spacing: 0.05em;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 100;
+		font-size: 0.60em;
+		color: #fff;
+	}
+	
+	.button:before
+	{
+	}
+		
