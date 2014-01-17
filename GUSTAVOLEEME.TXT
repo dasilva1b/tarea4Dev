@@ -1,0 +1,17 @@
+Hey!.
+Ya subi el final.
+Cuando lo monter, creo que seria bueno reiniciar la bd. Es decir
+colocar una nueva porque esta ya tiene muchas vainas de todas las veces
+que probamos.
+En el settings.py, en la parte de la bd (al princpio) pon un path ya del
+servidor y esa sera la bd (sqlite3).
+Para llenarla abre: <pagina>/admin y ahi metes que si 20-30 que agarres de
+the useless web y listolin.
+
+-Importante: Cuando termines de llenarla, es importante que cambies en el 
+templates/home.html, los atributos del iframe, y los ocultos del boton
+like y dislike. Como te lo mande estan con la pagina http://www.mlb.com.
+Ahi pon cualquier pagina que quieras, pero esa pagina tiene que estar en
+la base de datos!.
+
+-Me avisas cuando lo montes :).
