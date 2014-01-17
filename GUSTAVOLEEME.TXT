@@ -15,3 +15,5 @@ Ahi pon cualquier pagina que quieras, pero esa pagina tiene que estar en
 la base de datos!.
 
 -Me avisas cuando lo montes :).
+-PD: si no tienes tiempo o algo, en el git esta el archivo .db, asi que
+podriamos usar esa y ya. (Cambiar el path en el settings).
