@@ -45,11 +45,6 @@
 		color: white;
 	}
 	
-	ol, ul
-	{
-		padding: 0;
-		list-style: none;
-	}
 	
 	p
 	{
@@ -95,7 +90,9 @@
 	  margin:20px
 	}
 
-	
+	li {
+	  margin-top: 3em;
+	}
 	
 	
 

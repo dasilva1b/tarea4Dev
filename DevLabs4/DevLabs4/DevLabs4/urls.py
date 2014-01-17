@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from DevLabs4.views import home,home2,like, dislike
+from DevLabs4.views import home,home2,like, dislike, twitter,opentwlink
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -19,4 +19,6 @@ urlpatterns = patterns('',
     url(r'^hey/',home2),
     url(r'^like/',like),
     url(r'^dislike/',dislike),
+    url(r'^twitter/',twitter),
+    url(r'^opentwlink/',opentwlink),
 )

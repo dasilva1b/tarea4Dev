@@ -36,6 +36,277 @@
   });
 </script>
 
+<!-- Ajax para cuando se busca en twitter, presentar los resultados en un div oculto -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#boton_twitter").click(function() {
+    var input_string = $("#texto_form").val();
+    $.ajax({
+      url : "twitter/",
+      type : "POST",
+      dataType: "json",
+      data : {
+      client_response : input_string,
+      csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+      success : function(json) {
+	 
+      //Antes de presentar una nueva busqueda, borro los resultados de la anterior.
+      $( "#tw_results").attr('style','display:none');
+      $( "#twlink1").attr('href','');
+      $( "#twlink2").attr('href','');
+      $( "#twlink3").attr('href','');
+      $( "#twlink4").attr('href','');
+      $( "#twlink5").attr('href','');
+      $( "#twlink1").text('');
+      $( "#twlink2").text('');
+      $( "#twlink3").text('');
+      $( "#twlink4").text('');
+      $( "#twlink5").text('');
+      $("#noresults").text('');
+      var appended=0;
+      if (json.tweet1 !== "null"){
+	//ul.append('<li><a href="' + json.link1 + '" id="twlink1">' + json.tweet1 + '</a></li>');
+	$( "#twlink1" ).attr('href', json.link1);
+	$('#twlink1').text(json.tweet1);
+	appended=1;
+      }
+      if (json.tweet2 !== "null"){
+	//ul.append('<li><a href="' + json.link2 + '" id="twlink2">' + json.tweet2 + '</a></li>');
+	$( "#twlink2" ).attr('href', json.link2);
+	$('#twlink2').text(json.tweet2);
+	appended=1;
+      }
+      if (json.tweet3 !== "null"){
+	//ul.append('<li><a href="' + json.link3 + '" id="twlink3">' + json.tweet3 + '</a></li>');
+	$( "#twlink3" ).attr('href', json.link3);
+	$('#twlink3').text(json.tweet3);
+	appended=1;
+      }
+      if (json.tweet4 !== "null"){
+	//ul.append('<li><a href="' + json.link4 + '" id="twlink4">' + json.tweet4 + '</a></li>');
+	$( "#twlink4" ).attr('href', json.link4);
+	$('#twlink4').text(json.tweet4);
+	appended=1;
+      }
+      if (json.tweet5 !== "null"){
+	//ul.append('<li><a href="' + json.link5 + '" id="twlink5">' + json.tweet5 + '</a></li>');
+	$( "#twlink5" ).attr('href', json.link5);
+	$('#twlink5').text(json.tweet5);
+	appended=1;
+      }
+      if (appended == 0){
+	$("#noresults").text('Su busqueda no arrojo resultados');
+      }
+      $( "#tw_results" ).attr('style', 'display:block');
+      $("#texto_form").val('');
+      $("html, body").scrollTop($("#tw_results").offset().top);
+      },
+      error : function(xhr,errmsg,err) {
+      alert(xhr.status + ": " + xhr.responseText);
+      }
+    });
+    return false;
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#twlink1").click(function() {
+    var input_string = $( "#twlink1" ).attr('href') ;
+    $.ajax({
+      url : "opentwlink/",
+      type : "POST",
+      dataType: "json",
+      data : {
+      client_response : input_string,
+      csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+      success : function(json) {
+      $( "#pepe" ).attr('src', json.url);
+      $( "#like-dislike").attr('value',json.url);
+      $( "#like-dislike2").attr('value',json.url);
+      $( "#tw_results").attr('style','display:none');
+      $( "#twlink1").attr('href','');
+      $( "#twlink2").attr('href','');
+      $( "#twlink3").attr('href','');
+      $( "#twlink4").attr('href','');
+      $( "#twlink5").attr('href','');
+      $( "#twlink1").text('');
+      $( "#twlink2").text('');
+      $( "#twlink3").text('');
+      $( "#twlink4").text('');
+      $( "#twlink5").text('');
+      $("#noresults").text('');
+      $("html, body").scrollTop($("#titulo").offset().top);
+      },
+      error : function(xhr,errmsg,err) {
+      alert(xhr.status + ": " + xhr.responseText);
+      }
+    });
+    return false;
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#twlink2").click(function() {
+    var input_string = $( "#twlink2" ).attr('href') ;
+    $.ajax({
+      url : "opentwlink/",
+      type : "POST",
+      dataType: "json",
+      data : {
+      client_response : input_string,
+      csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+      success : function(json) {
+      $( "#pepe" ).attr('src', json.url);
+      $( "#like-dislike").attr('value',json.url);
+      $( "#like-dislike2").attr('value',json.url);
+      $( "#tw_results").attr('style','display:none');
+      $( "#twlink1").attr('href','');
+      $( "#twlink2").attr('href','');
+      $( "#twlink3").attr('href','');
+      $( "#twlink4").attr('href','');
+      $( "#twlink5").attr('href','');
+      $( "#twlink1").text('');
+      $( "#twlink2").text('');
+      $( "#twlink3").text('');
+      $( "#twlink4").text('');
+      $( "#twlink5").text('');
+      $("#noresults").text('');
+      $("html, body").scrollTop($("#titulo").offset().top);
+      },
+      error : function(xhr,errmsg,err) {
+      alert(xhr.status + ": " + xhr.responseText);
+      }
+    });
+    return false;
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#twlink3").click(function() {
+    var input_string = $( "#twlink3" ).attr('href') ;
+    $.ajax({
+      url : "opentwlink/",
+      type : "POST",
+      dataType: "json",
+      data : {
+      client_response : input_string,
+      csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+      success : function(json) {
+      $( "#pepe" ).attr('src', json.url);
+      $( "#like-dislike").attr('value',json.url);
+      $( "#like-dislike2").attr('value',json.url);
+      $( "#tw_results").attr('style','display:none');
+      $( "#twlink1").attr('href','');
+      $( "#twlink2").attr('href','');
+      $( "#twlink3").attr('href','');
+      $( "#twlink4").attr('href','');
+      $( "#twlink5").attr('href','');
+      $( "#twlink1").text('');
+      $( "#twlink2").text('');
+      $( "#twlink3").text('');
+      $( "#twlink4").text('');
+      $( "#twlink5").text('');
+      $("#noresults").text('');
+      $("html, body").scrollTop($("#titulo").offset().top);
+      },
+      error : function(xhr,errmsg,err) {
+      alert(xhr.status + ": " + xhr.responseText);
+      }
+    });
+    return false;
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#twlink4").click(function() {
+    var input_string = $( "#twlink4" ).attr('href') ;
+    $.ajax({
+      url : "opentwlink/",
+      type : "POST",
+      dataType: "json",
+      data : {
+      client_response : input_string,
+      csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+      success : function(json) {
+      $( "#pepe" ).attr('src', json.url);
+      $( "#like-dislike").attr('value',json.url);
+      $( "#like-dislike2").attr('value',json.url);
+      $( "#tw_results").attr('style','display:none');
+      $( "#twlink1").attr('href','');
+      $( "#twlink2").attr('href','');
+      $( "#twlink3").attr('href','');
+      $( "#twlink4").attr('href','');
+      $( "#twlink5").attr('href','');
+      $( "#twlink1").text('');
+      $( "#twlink2").text('');
+      $( "#twlink3").text('');
+      $( "#twlink4").text('');
+      $( "#twlink5").text('');
+      $("#noresults").text('');
+      $("html, body").scrollTop($("#titulo").offset().top);
+      },
+      error : function(xhr,errmsg,err) {
+      alert(xhr.status + ": " + xhr.responseText);
+      }
+    });
+    return false;
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#twlink5").click(function() {
+    var input_string = $( "#twlink5" ).attr('href') ;
+    $.ajax({
+      url : "opentwlink/",
+      type : "POST",
+      dataType: "json",
+      data : {
+      client_response : input_string,
+      csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+      success : function(json) {
+      $( "#pepe" ).attr('src', json.url);
+      $( "#like-dislike").attr('value',json.url);
+      $( "#like-dislike2").attr('value',json.url);
+      $( "#tw_results").attr('style','display:none');
+      $( "#twlink1").attr('href','');
+      $( "#twlink2").attr('href','');
+      $( "#twlink3").attr('href','');
+      $( "#twlink4").attr('href','');
+      $( "#twlink5").attr('href','');
+      $( "#twlink1").text('');
+      $( "#twlink2").text('');
+      $( "#twlink3").text('');
+      $( "#twlink4").text('');
+      $( "#twlink5").text('');
+      $("#noresults").text('');
+      $("html, body").scrollTop($("#titulo").offset().top);
+      },
+      error : function(xhr,errmsg,err) {
+      alert(xhr.status + ": " + xhr.responseText);
+      }
+    });
+    return false;
+    });
+  });
+</script>
+
+
 <div class="titulo" id="titulo" style="text-align:center">
 <img src="../../static/image.png"></img>
 </div>
@@ -50,20 +321,41 @@
 
   <form method="post" action="/like/">
   {% csrf_token %}
-      <input id="like-dislike" type="hidden" value="http://www.w3schools.com" name="iframeurl">
+      <input id="like-dislike" type="hidden" value="http://www.mlb.com" name="iframeurl">
       <input class="botones" type="submit" value="Like">
   </form>
 
   <form method="post" action="/dislike/">
   {% csrf_token %}
-      <input id="like-dislike2" type="hidden" value="http://www.w3schools.com" name="iframeurl">
+      <input id="like-dislike2" type="hidden" value="http://www.mlb.com" name="iframeurl">
       <input class="botones" type="submit" value="Dislike">
+  </form>
+
+  <form method="post" name="twitter">
+    {% csrf_token %}
+   <input class="botones" id="boton_twitter" type="submit" value="What's new?">
+   <input name="example" id="texto_form" type="text">
   </form>
 </div>
 <hr></hr>
 
 <div id="iframe" style="text-align:center">
-<iframe id="pepe" width="95%" height="600" src="http://www.w3schools.com"></iframe>
+<iframe id="pepe" width="95%" height="600" src="http://www.mlb.com"></iframe>
+</div>
+
+<!--Parte oculta para mostrar los resultados de los tweets-->
+<div id="tw_results" style="display:none">
+<p> Resultados de la busqueda:</p>
+<ul>
+  <li> <a href="" id="twlink1">  </a></li>
+  <li> <a href="" id="twlink2">  </a></li>
+  <li> <a href="" id="twlink3">  </a></li>
+  <li> <a href="" id="twlink4">  </a></li>
+  <li> <a href="" id="twlink5">  </a></li>
+</ul>
+<p id="noresults"> </p>
+</div>
+
 </div>
  
 </body>
